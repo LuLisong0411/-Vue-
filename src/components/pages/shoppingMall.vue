@@ -1,10 +1,19 @@
 <template>
     <div>
-        <van-row>
-            <van-col span="4">span 4</van-col>
-            <van-col span="16">span 16</van-col>
-            <van-col span="4">sapn 4</van-col>
-        </van-row>
+        <div class="search-bar">
+            <van-row>
+                <van-col span="3">
+                    <img :src="locationIcon" width="80%" calss="locationIcon">
+                </van-col>
+                <van-col span="16">
+                    <input type="text" class="search-input">
+                </van-col>
+                <van-col span="5">
+                    <van-button type="mini">搜索</van-button>
+                </van-col>
+            </van-row>
+        </div>
+        
     </div>
 </template>
 
@@ -12,12 +21,31 @@
     export default {
         data() {
             return {
-                msg: 'hello world'
+                msg: 'hello world',
+                locationIcon:require('../../assets/images/location.png')
             }
         },
     }
 </script>
 
 <style scoped>
-
+    .search-bar{
+        height: 2.2rem;
+        background-color: #e5017d;
+        line-height: 2.2rem;
+    }
+    .search-input{
+        width:100%;
+        height:1.3rem;
+        border-top:0px;
+        border-right:0px;
+        border-left:0px;
+        border-bottom: 1px solid #fff !important;
+        background-color:#e5017d;
+        color:#fff;
+    }
+    .locationIcon{
+        padding-top:0.2rem;
+        padding-left:0.3rem;
+    }
 </style>
