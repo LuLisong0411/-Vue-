@@ -21,14 +21,22 @@
                 </van-swipe-item>
             </van-swipe>
         </div>
+        <!-- type bar -->
+        <div class="type-bar">
+            <div v-for="categorys in category" >
+                <img v-lazy="categorys.image" width="90%">
+                <span>{{categorys.mallCategoryName}}</span>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         data() {
             return {
-                msg: 'hello world',
+                msg: '',
                 locationIcon:require('../../assets/images/location.png'),
                 bannerPicArray:[
                 {imageUrl:'https://aecpm.alicdn.com/simba/img/TB1W4nPJFXXXXbSXpXXSutbFXXX.jpg'},
@@ -38,6 +46,20 @@
             ]
             }
         },
+        created(){
+            axios({
+                url:'https://www.easy-mock.com/mock/5d1b68ea4e718016e83ba659/RSshop/index',
+                method:'get',
+            }).then(response=>{
+                console.log(response);
+                if(response.status == 200){
+                    this.category = response.data.data.category;
+                }
+            }).catch(error=>{
+                console.log(error);
+            })
+
+        }
     }
 </script>
 
@@ -67,5 +89,14 @@
         /* 解决懒加载时网速慢的问题 */
         max-height: 15rem;
         overflow: hidden;
+    }
+    .type-bar{
+        background-color: #fff;
+        margin:0 .3rem .3rem .3rem;
+        border-radius: .3rem;
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
     }
 </style>
