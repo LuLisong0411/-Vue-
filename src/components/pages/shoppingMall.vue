@@ -92,8 +92,8 @@
     }
     .type-bar{
         background-color: #fff;
-        margin:0 0.3rem 0.3rem 0.3rem;
-        border-radius: 0.3rem;
+        margin:0 .3rem .3rem .3rem;
+        border-radius: .3rem;
         font-size: 14px;
         display: flex;
         flex-direction: row;
