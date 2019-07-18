@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 全局引入VueAwesomeSwiper
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
+// import 'swiper/dist/css/swiper.css'
+
 //全局引入  打包后体积过大 采用babel-plugin-import比较好
 // import Vant from 'vant'
 // import 'vant/lib/vant-css/index.css'
