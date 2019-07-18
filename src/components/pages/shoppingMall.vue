@@ -47,6 +47,15 @@
                 </swiper>
             </div>
         </div>
+        <!-- floor area -->
+        <div class="floor">
+            <div class="floor-rule">
+                <div v-for="(item,index) in floor1.slice(3)" :key="index">
+                    <img :src="item.image" width="100%">
+                </div>
+            </div>
+        </div>
+    
     </div>
 </template>
 
@@ -68,7 +77,9 @@
                 bannerPicArray:[], 
                 category:[],
                 adBanner:'',
-                recommendGoods:[]
+                recommendGoods:[],
+                floor1:[],
+                
             }
         },
         // components:{swiper,swiperSlide,swiperDefault,swiperAuto},
@@ -84,7 +95,9 @@
                     this.category=response.data.data.category;
                     this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS;
                     this.bannerPicArray = response.data.data.slides;
-                    this.recommendGoods = response.data.data.recommend
+                    this.recommendGoods = response.data.data.recommend;
+                    this.floor1 = response.data.data.floor1;
+
                 }
             })
             .catch((error) => {     
@@ -153,5 +166,20 @@
       border-right: 1px solid #eee;
       font-size: 12px;
       text-align: center
+  }
+  .floor-rule{
+      display: flex;
+      flex-direction:row;
+      flex-wrap: wrap;
+      background-color: #fff;
+  }
+  .floor-rule div{
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width:10rem;
+      border-bottom:1px solid #ddd;
+  }
+  .floor-rule div:nth-child(odd){
+      border-right: 1px solid #ddd;
   }
 </style>
