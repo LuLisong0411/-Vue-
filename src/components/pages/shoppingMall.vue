@@ -54,6 +54,9 @@
     import axios from 'axios';
     import 'swiper/dist/css/swiper.css'
     import{swiper , swiperSlide} from 'vue-awesome-swiper'
+    //测试swiper的特效
+    // import swiperDefault from '../pages/swiperDefault'
+    // import swiperAuto from '../pages/swiperAuto'
     export default {
         data() {
             return {
@@ -68,10 +71,8 @@
                 recommendGoods:[]
             }
         },
-        components:{
-            swiper, 
-            swiperSlide
-            },
+        // components:{swiper,swiperSlide,swiperDefault,swiperAuto},
+        components:{swiper,swiperSlide},
         created(){
             axios({
                 url: 'https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/index',
