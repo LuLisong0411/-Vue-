@@ -51,7 +51,20 @@
         <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent> 
         <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent> 
         <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent> 
-      
+        <!-- hot area -->
+        <div class="hot-area">
+            <div class="hot-title">热卖商品</div>
+            <div class="hot-goods">
+                <!-- hot list列表 -->
+                <van-list>
+                    <van-row gutter="20">
+                        <van-col span="12" v-for="(item,index) in hotGoods" :key="index">
+                            <goodsInfoComponent :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price"></goodsInfoComponent>
+                        </van-col>
+                    </van-row>
+                </van-list>
+            </div>
+        </div>
     
     </div>
 </template>
@@ -62,6 +75,7 @@
     import{swiper , swiperSlide} from 'vue-awesome-swiper'
     import floorComponent from '../component/floorComponent'
     import {toMoney} from '../../filter/moneyFilter.js'
+    import goodsInfoComponent from '../component/goodsInfoComponent'
     //测试swiper的特效
     // import swiperDefault from '../pages/swiperDefault'
     // import swiperAuto from '../pages/swiperAuto'
@@ -81,7 +95,7 @@
                 floor2:[],         //楼层1的数据
                 floor3:[],         //楼层1的数据
                 floorName:{},       //楼层名称
-  
+                hotGoods:[]
             }
         },
         filters:{
@@ -90,7 +104,7 @@
             }
         },
         // components:{swiper,swiperSlide,swiperDefault,swiperAuto},
-        components:{swiper,swiperSlide,floorComponent},
+        components:{swiper,swiperSlide,floorComponent,goodsInfoComponent},
         created(){
             axios({
                 url: 'https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/index',
@@ -107,6 +121,8 @@
                     this.floor1 = response.data.data.floor1              //楼层1数据
                     this.floor2 = response.data.data.floor2              //楼层2数据
                     this.floor3 = response.data.data.floor3              //楼层3数据
+                    this.hotGoods = response.data.data.hotGoods
+                    console.log(this.hotGoods)
                 }
             })
             .catch((error) => {     
@@ -190,5 +206,11 @@
   }
   .floor-rule div:nth-child(odd){
       border-right: 1px solid #ddd;
+  }
+  .hot-area{
+      text-align: center;
+      font-size:14px;
+      height: 1.8rem;
+      line-height:1.8rem;
   }
 </style>
