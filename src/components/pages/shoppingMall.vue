@@ -76,6 +76,7 @@
     import floorComponent from '../component/floorComponent'
     import {toMoney} from '../../filter/moneyFilter.js'
     import goodsInfoComponent from '../component/goodsInfoComponent'
+    import url from '@/serviceAPI.config.js'
     //测试swiper的特效
     // import swiperDefault from '../pages/swiperDefault'
     // import swiperAuto from '../pages/swiperAuto'
@@ -107,7 +108,7 @@
         components:{swiper,swiperSlide,floorComponent,goodsInfoComponent},
         created(){
             axios({
-                url: 'https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/index',
+                url: url.getShoppingMallInfo,
                 method: 'get',
             })
             .then(response => {
