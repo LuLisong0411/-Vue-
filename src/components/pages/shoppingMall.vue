@@ -41,7 +41,7 @@
                         <div class="recommend-item">
                             <img :src="item.image" width="80%">
                             <div>{{item.goodsName}}</div>
-                            <div>￥{{item.price}} (￥{{item.mallPrice}})</div>
+                            <div>￥{{item.price | moneyFilter}} (￥{{item.mallPrice | moneyFilter}})</div>
                         </div>
                     </swiper-slide>
                 </swiper>
@@ -61,6 +61,7 @@
     import 'swiper/dist/css/swiper.css'
     import{swiper , swiperSlide} from 'vue-awesome-swiper'
     import floorComponent from '../component/floorComponent'
+    import {toMoney} from '../../filter/moneyFilter.js'
     //测试swiper的特效
     // import swiperDefault from '../pages/swiperDefault'
     // import swiperAuto from '../pages/swiperAuto'
@@ -79,8 +80,13 @@
                 floor1:[],         //楼层1的数据
                 floor2:[],         //楼层1的数据
                 floor3:[],         //楼层1的数据
-                floorName:{}       //楼层名称
-                
+                floorName:{},       //楼层名称
+  
+            }
+        },
+        filters:{
+            moneyFilter(money){
+                return toMoney(money)
             }
         },
         // components:{swiper,swiperSlide,swiperDefault,swiperAuto},
