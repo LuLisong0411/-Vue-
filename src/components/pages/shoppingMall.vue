@@ -48,7 +48,9 @@
             </div>
         </div>
         <!-- floor area -->
-        <floorComponent :floorData="floor1"></floorComponent> 
+        <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent> 
+        <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent> 
+        <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent> 
       
     
     </div>
@@ -70,11 +72,14 @@
                 },
                 msg: '',
                 locationIcon:require('../../assets/images/location.png'),
-                bannerPicArray:[], 
-                category:[],
-                adBanner:'',
-                recommendGoods:[],
-                floor1:[],
+                bannerPicArray:[], // 轮播图片
+                category:[],       //商品类别标签栏
+                adBanner:'',       //广告图片
+                recommendGoods:[], //推荐商品
+                floor1:[],         //楼层1的数据
+                floor2:[],         //楼层1的数据
+                floor3:[],         //楼层1的数据
+                floorName:{}       //楼层名称
                 
             }
         },
@@ -92,8 +97,10 @@
                     this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS;
                     this.bannerPicArray = response.data.data.slides;
                     this.recommendGoods = response.data.data.recommend;
-                    this.floor1 = response.data.data.floor1;
-
+                    this.floorName = response.data.data.floorName        //楼层名称
+                    this.floor1 = response.data.data.floor1              //楼层1数据
+                    this.floor2 = response.data.data.floor2              //楼层2数据
+                    this.floor3 = response.data.data.floor3              //楼层3数据
                 }
             })
             .catch((error) => {     
