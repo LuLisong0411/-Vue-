@@ -48,13 +48,8 @@
             </div>
         </div>
         <!-- floor area -->
-        <div class="floor">
-            <div class="floor-rule">
-                <div v-for="(item,index) in floor1.slice(3)" :key="index">
-                    <img :src="item.image" width="100%">
-                </div>
-            </div>
-        </div>
+        <floorComponent :floorData="floor1"></floorComponent> 
+      
     
     </div>
 </template>
@@ -63,6 +58,7 @@
     import axios from 'axios';
     import 'swiper/dist/css/swiper.css'
     import{swiper , swiperSlide} from 'vue-awesome-swiper'
+    import floorComponent from '../component/floorComponent'
     //测试swiper的特效
     // import swiperDefault from '../pages/swiperDefault'
     // import swiperAuto from '../pages/swiperAuto'
@@ -83,7 +79,7 @@
             }
         },
         // components:{swiper,swiperSlide,swiperDefault,swiperAuto},
-        components:{swiper,swiperSlide},
+        components:{swiper,swiperSlide,floorComponent},
         created(){
             axios({
                 url: 'https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/index',
