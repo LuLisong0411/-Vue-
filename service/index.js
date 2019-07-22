@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 //引入connect,initSchemas
 const {connect,initSchemas} = require('./database/init')
 const Router = require('koa-router')
+const bodyParse = require('koa-bodyparser')
+const cors = require('koa2-cors')
 // 引入user.js模块
 let user = require('../appAPI/User')
 // 装载所有子路由
@@ -12,11 +14,13 @@ router.use('/user',user.routes())
 
 // 加载路由中间件
 app.use(router.routes())
-app.use(router.allowedMethods());
+app.use(router.allowedMethods())
+app.use(bodyParse())
+app.use(cors())
 
 
 //立即执行函数
-(async()=>{
+;(async()=>{
     await connect();
     initSchemas();
     const User = mongoose.model('User');
