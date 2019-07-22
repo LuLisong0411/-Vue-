@@ -1,9 +1,18 @@
-const Koa = require('koa');
-const app = new Koa();
+const Koa = require('koa')
+const app = new Koa()
 const mongoose = require('mongoose')
 //引入connect,initSchemas
-const {connect,initSchemas} = require('./database/init');
+const {connect,initSchemas} = require('./database/init')
+const Router = require('koa-router')
+// 引入user.js模块
+let user = require('../appAPI/User')
+// 装载所有子路由
+let router = new Router()
+router.use('/user',user.routes())
 
+// 加载路由中间件
+app.use(router.routes())
+app.use(router.allowedMethods());
 
 
 //立即执行函数
