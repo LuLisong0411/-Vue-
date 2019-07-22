@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 //引入connect,initSchemas
 const {connect,initSchemas} = require('./database/init');
 
+
+
 //立即执行函数
 (async()=>{
     await connect();
@@ -16,7 +18,8 @@ const {connect,initSchemas} = require('./database/init');
     let users = await User.findOne({}).exec();
     console.log('----------------');
     console.log(users);
-    console.log('----------------')
+    console.log('----------------');
+    
 })();
 
 app.use(async(ctx)=>{
