@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const db = "mongodb://localhost/simle-db";
+// glob：node的glob模块允许你使用 * 等符号，来写一个glob规则，像在shell里一样，获取匹配对应规则文件。
+// resolve: 将一系列路径或路径段解析为绝对路径。
+const glob = require('glob');
+const {resolve} = require('path')
 
 mongoose.Promise = global.Promise;
 
@@ -36,4 +40,8 @@ exports.connect = ()=>{
             resolve();
         })
     })
+ }
+//  使用glob.sync同步引入所有的schema文件，然后用forEach的方法require（引入）进来。比一条条引入要优雅的多
+ exports.initSchemas = ()=>{
+     glob.sync(resolve(__dirname,'./schema/',"**/*.js")).forEach(require)
  }
