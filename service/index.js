@@ -7,7 +7,7 @@ const Router = require('koa-router')
 const bodyParse = require('koa-bodyparser')
 const cors = require('koa2-cors')
 // 引入user.js模块
-let user = require('../appAPI/User')
+let user = require('./appAPI/User')
 // 装载所有子路由
 let router = new Router()
 router.use('/user',user.routes())
@@ -36,7 +36,7 @@ app.use(cors())
 })();
 
 app.use(async(ctx)=>{
-    ctx.body = '<h1>hello Koa2</h1>'
+    ctx.body = 'hello koa'
 });
 app.listen(3000,()=>{
     console.log('[Server] starting at port 3000')

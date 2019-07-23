@@ -112,7 +112,7 @@
                 method: 'get',
             })
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 if(response.status==200){
                     this.category=response.data.data.category;
                     this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS;
@@ -123,11 +123,11 @@
                     this.floor2 = response.data.data.floor2              //楼层2数据
                     this.floor3 = response.data.data.floor3              //楼层3数据
                     this.hotGoods = response.data.data.hotGoods
-                    console.log(this.hotGoods)
+                    // console.log(this.hotGoods)
                 }
             })
             .catch((error) => {     
-                console.log(error)
+                // console.log(error)
             })
         }
         

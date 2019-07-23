@@ -11,7 +11,7 @@ const userSchema = new Schema({
     userName:{unique:true,type:String},
     password:String,
     createAt:{type:Date,default:Date.now()},
-    lastLoginAt:{type:Date,default:Date.now()}
+    lastLoginAt:{type:Date,default:Date.now()},
     
 });
 //每次存储数据时都要执行
