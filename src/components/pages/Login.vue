@@ -26,7 +26,7 @@
                 required
             />
             <div class="register-button">
-                <van-button type="primary" size="large" @click="registerAction" :loading="openLoading">马上注册</van-button>
+                <van-button type="primary" size="large" @click="loginAction" :loading="openLoading">马上注册</van-button>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@ import { Toast } from 'vant'
                 this.openLoading = true;
 
                 axios({
-                    url:url.registerUser,
+                    url:url.login,
                     method:'post',
                     data:{
                         username: this.username,

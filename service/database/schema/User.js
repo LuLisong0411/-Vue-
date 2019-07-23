@@ -14,7 +14,7 @@ const userSchema = new Schema({
     lastLoginAt:{type:Date,default:Date.now()},
     
 });
-//每次存储数据时都要执行
+//每次存储数据时都要执行,用户密码加密机制
 userSchema.pre('save', function(next){
     //let user = this
         console.log(this)
@@ -26,7 +26,23 @@ userSchema.pre('save', function(next){
                 next();
             }) 
     })
-})
+});
+// 声明一个实例方法comparePassword，然后传递两个参数，一个是客户端密码，一个是数据库取出来的密码。
+// 用bcrypt提供的compare方法就可以比对，最后包装成Promise返回就可以了。
+userSchema.methods = {
+    //密码比对的方法
+    comparePassword:(_password,password)=>{
+        return new Promise((resolve,reject)=>{
+            bcrypt.compare(_password,password,(err,isMatch)=>{
+                if(!err) {
+                    resolve(isMatch);
+                }else{
+                    reject(err)
+                }
+            })
+        })
+    }
+}
 //发布模型
 mongoose.model('User',userSchema);
 
