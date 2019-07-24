@@ -26,7 +26,7 @@
                 required
             />
             <div class="register-button">
-                <van-button type="primary" size="large" @click="loginAction" :loading="openLoading">马上注册</van-button>
+                <van-button type="primary" size="large" @click="loginAction" :loading="openLoading">登陆</van-button>
             </div>
         </div>
     </div>
@@ -50,12 +50,26 @@ import { Toast } from 'vant'
             goBack() {
                 this.$router.go(-1)   
             },
-            registerAction(){
+            loginAction(){
                 this.checkForm() && this.axiosRegisterUser()
             },
+            
             //*********axios注册用户方法********
             axiosRegisterUser(){
+                //先把按钮进行loading状态，防止重复提交
                 this.openLoading = true;
+                new Promise((resolve,reject)=>{
+                    localStorage.userInfo = {userName:this.username};
+                    setTimeout(()=>{
+                        resolve()
+                    },800)
+                }).then(()=>{
+                    Toast.success('登陆成功');
+                    this.router.push('/')
+                }).catch((err)=>{
+                    Toast.fail('登陆状态保存失败');
+                    console.log(err)
+                })
 
                 axios({
                     url:url.login,
@@ -65,10 +79,19 @@ import { Toast } from 'vant'
                         password: this.password,
                     }
                 }).then(response=>{
-                    
+                    console.log(response);
+                    if(response.data.code == 200 && response.data.message){
+                        Toast.success('登陆成功');
+                        this.$router.push('/')
+                    }else{
+                        Toast.fail('登陆失败');
+                        this.openLoading = false;
+                    }
                     
                 }).catch((error)=>{
-                    
+                    console.log(error);
+                    Toast.fail('登陆失败');
+                    this.openLoading = false
                 })
             },
             // **** 客户端验证:编写验证方法checkFrom,用来专门验证表单信息
@@ -87,9 +110,14 @@ import { Toast } from 'vant'
                     this.passwordErrorMsg = ''
                 }
                 return isOk
-            },
-            
+            },            
         },
+        created(){
+            if(localStorage.userInfo){
+                Toast.success('您已经登陆过了');
+                this.$router.push('/')
+            }
+        }
     }
 </script>
 
