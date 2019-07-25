@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="navbar-div">
+    <div class="navbar-div" swipeable sticky>
         <van-nav-bar
             title="商品详情"
             left-text="返回"
