@@ -11,6 +11,20 @@
     <div class="topimage-div">
         <img :src="goodsInfo.IMAGE1" width="100%"/>
     </div>
+    <div class="goods-name">{{goodsInfo.NAME}}</div>
+    <div class="goods-price">价格：{{goodsInfo.PRESENT_PRICE}}</div>
+    <div>
+        <van-tabs>
+        <van-tab title="商品详情">
+            <div class="detail" v-html="goodsInfo.DETAIL">
+             
+            </div>
+        </van-tab>
+        <van-tab title="评价">
+            正在制作中
+        </van-tab>
+        </van-tabs>
+    </div>
 </div>
 </template>
 
