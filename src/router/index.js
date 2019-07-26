@@ -13,14 +13,16 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-   {path:'/index',name:'index',component:index,
-      children:[
-        {path:'/',name:'ShoppingMall',component:ShoppingMall},
-        {path:'/CategoryList',name:'CategoryList',component:CategoryList},
-        {path:'/Cart',name:'Cart',component:Cart},
-        {path:'/Member',name:'Member',component:Member},
-      ]
-   },
+    {path:'/index',name:'index',component:index,
+
+    children:[
+      {path:'/',name:'ShoppingMall',component:ShoppingMall},
+      {path:'/CategoryList',name:'CategoryList',component:CategoryList},
+      {path:'/Cart',name:'Cart',component:Cart},
+      {path:'/Member',name:'Member',component:Member},
+    ]
+ },
+   
   
    {path:'/register',name:'Register',component:Register},
    {path:'/login',name:'Login',component:Login},
