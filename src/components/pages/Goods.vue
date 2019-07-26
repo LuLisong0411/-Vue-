@@ -48,6 +48,7 @@
             return {
                 goodsId: '',
                 goodsInfo:{},   //商品详细数据
+                category:[],
             }
         },
         filters:{
@@ -84,6 +85,26 @@
                 .catch(error=>{
                     console.log(error)
                 })
+            },
+            getCategory() {
+                axios({
+                    url:url.getCategoryList,
+                    method:'get',
+                })
+                .then(response=>{
+
+                    console.log(response)
+
+                    if(response.data.code == 200 && response.data.message ){
+                        
+                    }else{
+                        Toast('服务器错误，数据取得失败')
+                    }
+                    
+                })
+                .catch(error=>{
+                    console.log(error)
+                }) 
             }
         },
     }
