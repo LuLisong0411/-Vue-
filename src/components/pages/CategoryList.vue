@@ -139,7 +139,7 @@
             //上拉加载方法
             onLoad(){
                 setTimeout(()=>{
-                   this.categorySubId = this.categorySubId?this.categorySubId:this.categorySub[0].ID
+                   this.categorySubId = this.categorySubId?this.categorySubId:this.categorySub[0].id
                    this.getGoodList()
                 },1000)
             },
