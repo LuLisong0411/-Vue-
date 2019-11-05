@@ -16,7 +16,7 @@
     "glob": "^7.1.4",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
-    "mongoose": "^5.6.5",
+    "mongoose": "^5.7.5",
     "vant": "^2.0.4",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.3",
